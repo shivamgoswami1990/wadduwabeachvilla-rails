@@ -23,7 +23,9 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     if @contact.save
       response_code = SendgridEmail.send_contact_email(@contact.name, @contact.email, @contact.message)
-      render :json => response_code
+      render :json => {
+          "response_code": response_code
+      }
     else
       render json: :BadRequest, status: 400
     end
