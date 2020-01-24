@@ -1,3 +1,3 @@
 class ApplicationController < ActionController::API
-  include HasScopeGenerator
+  include HasScopeGenerator, SendgridEmail
 end

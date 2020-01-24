@@ -1,6 +1,4 @@
 class ContactsController < ApplicationController
-  #before_action :load_contact, only: [:show, :edit, :update, :destroy]
-
   #//////////////////////////////////////////// SCOPES ////////////////////////////////////////////////////////////////
 
   #Initialise scopes using concerns
@@ -24,7 +22,8 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     if @contact.save
-      render :json => @contact
+      response_code = SendgridEmail.send_contact_email(@contact.name, @contact.email, @contact.message)
+      render :json => response_code
     else
       render json: :BadRequest, status: 400
     end
