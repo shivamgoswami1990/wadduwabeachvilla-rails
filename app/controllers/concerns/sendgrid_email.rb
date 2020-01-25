@@ -24,7 +24,7 @@ module SendgridEmail
           },
           "template_id": "d-d0d04acbc4364a2480709361300863a1"
         }
-        sg = SendGrid::API.new(api_key: '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')
+        sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
         begin
           response = sg.client.mail._("send").post(request_body: data)
         rescue Exception => e
