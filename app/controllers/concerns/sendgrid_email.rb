@@ -9,7 +9,10 @@ module SendgridEmail
               "to": [
                 {
                   "email": "wadduwabeachvilla@gmail.com"
-                }
+                },
+                {
+                  "email": "wadduwabeachvilla@outlook.com"
+                },
               ],
               "dynamic_template_data": {
                 "name": name,
